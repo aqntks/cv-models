@@ -1,4 +1,4 @@
-
+import torch
 import torch.nn as nn
 
 from selector.cls_train import train, evaluate
@@ -9,6 +9,7 @@ from classification.resnet import ResNet
 from classification.mobilenetv2 import MobileNetV2
 from classification.mobilenetv3 import MobileNetV3
 from classification.alexnet import AlexNet
+from classification.googlenet import GoogLeNet
 
 from optimizer.optimizer import optim
 
@@ -28,9 +29,13 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
         model = MobileNetV3('mobilenet_v3_large').to(DEVICE)
     if model_name == 'alexnet':
         model = AlexNet().to(DEVICE)
+    if model_name == 'googlenet':      # 수정 해야함
+        model = GoogLeNet().to(DEVICE)
+
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()
+
 
     print(model)
 
