@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 from torch import Tensor
-from typing import Callable, Any, Optional, List
+from typing import Callable, Optional, List
 
 
 def _make_divisible(v: float, divisor: int, min_value: Optional[int] = None) -> int:
