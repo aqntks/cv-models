@@ -8,6 +8,7 @@ from classification.cnn import CNN
 from classification.resnet import ResNet
 from classification.mobilenetv2 import MobileNetV2
 from classification.mobilenetv3 import MobileNetV3
+from classification.alexnet import AlexNet
 
 from optimizer.optimizer import optim
 
@@ -25,6 +26,8 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
         model = MobileNetV3('mobilenet_v3_small').to(DEVICE)
     if model_name == 'mobilenetv3l':
         model = MobileNetV3('mobilenet_v3_large').to(DEVICE)
+    if model_name == 'alexnet':
+        model = AlexNet().to(DEVICE)
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()
