@@ -8,10 +8,10 @@
     
     pip install -r requirements.txt
 ##  모델 학습 (Model Train)
-    python main.py --mode classification --model resnet --optim adam --data CIFAR_10 --batch 32 --epoch 10
+    python main.py --mode classification --model resnet --optim Adam --data CIFAR_10 --batch 32 --epoch 10
 --mode : 모델 유형  < classification, detection, segmentation >  
---model : 학습 모델 < mlp, cnn, resnet, alexnet, yolov5 etc >  
---optim : 옵티마이저 < adam, SGD, adagrad, RMSprop etc >  
+--model : 학습 모델 < mlp, cnn, resnet, alexnet, vgg13 etc >  
+--optim : 옵티마이저 < Adam, SGD, AdaGrad, RMSprop etc >  
 --data : 학습 데이터 < CIFAR_10, SVHN, Places365, STL10 etc >  
 --batch : 배치 사이즈  
 --epoch : 세대 수  
