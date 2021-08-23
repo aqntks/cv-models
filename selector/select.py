@@ -11,6 +11,7 @@ from classification.mobilenetv3 import MobileNetV3
 from classification.alexnet import AlexNet
 from classification.googlenet import GoogLeNet
 from classification.squeezenet import SqueezeNet
+from classification.vgg import makeVgg
 
 from optimizer.optimizer import optim
 
@@ -36,6 +37,9 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
         model = SqueezeNet('1_0').to(DEVICE)
     if model_name == 'squeezenet1_1':
         model = SqueezeNet('1_1').to(DEVICE)
+    if model_name.split('-')[0] == 'vgg':
+        model_name = model_name.split('-')[0] + model_name.split('-')[1]
+        model = makeVgg(model_name).to(DEVICE)
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()
