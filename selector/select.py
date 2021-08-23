@@ -1,4 +1,3 @@
-import torch
 import torch.nn as nn
 
 from selector.cls_train import train, evaluate
@@ -12,6 +11,7 @@ from classification.alexnet import AlexNet
 from classification.googlenet import GoogLeNet
 from classification.squeezenet import SqueezeNet
 from classification.vgg import makeVgg
+from classification.mnasnet import MNASNet
 
 from optimizer.optimizer import optim
 
@@ -40,10 +40,11 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
     if model_name.split('-')[0] == 'vgg':
         model_name = model_name.split('-')[0] + model_name.split('-')[1]
         model = makeVgg(model_name).to(DEVICE)
+    if model_name.split('-')[0] == 'mnasnet':
+        model = MNASNet(float(model_name.split('-')[1]))
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()
-
 
     print(model)
 

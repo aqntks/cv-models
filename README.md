@@ -9,10 +9,10 @@
 7. DenseNet - (예정)
 8. GoogleNet - (작성중)
 9. Inception - (예정)
-10. MnasNet - (예정)
+10. MnasNet - (완료) >> version : [mnasnet-0.5, mnasnet-0.75, mnasnet-1.0, mnasnet-1.3]
 11. ShuffleNetV2 - (예정)
 12. SqueezeNet - (완료) version : [squeezenet1_0, squeezenet1_1]
-14. VGG - (예정) version : [vgg11, vgg11_bn, vgg13, vgg13_bn, vgg16, vgg16_bn, vgg19, vgg19_bn]
+14. VGG - (완료) version : [vgg11, vgg11_bn, vgg13, vgg13_bn, vgg16, vgg16_bn, vgg19, vgg19_bn]
 15. vit - (예정)
 ### * 탐지 모델 (Detection) *
 1. yolov1 - (예정)
