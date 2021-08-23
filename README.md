@@ -21,7 +21,7 @@
 3. ResNet (Residual Neural Network) - (완료)
 4. AlexNet - (완료) : 이미지 사이즈 >= 256
 5. MobileNetV2 - (완료)
-6. MobileNetV3 - (완료)
+6. MobileNetV3 - (완료) >> version : [mobilenetv3s, mobilenetv3l]
 7. DenseNet - (예정)
 8. GoogleNet - (작성중)
 9. Inception - (예정)
