@@ -55,4 +55,9 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
             epoch, test_loss, test_accuracy))
 
 
+def detection():
+    print("준비중인 모델입니다...")
 
+
+def segmentation():
+    print("준비중인 모델입니다...")
