@@ -11,9 +11,10 @@
 9. Inception - (예정)
 10. MnasNet - (예정)
 11. ShuffleNetV2 - (예정)
-12. squeezenet - (예정)
-13. vgg - (예정)
-14. vit - (예정)
+12. SqueezenNet0 - (완료)
+13. SqueezeNet1 - (완료)
+14. vgg - (예정)
+15. vit - (예정)
 ### * 탐지 모델 (Detection) *
 1. yolov1 - (예정)
 2. yolov2 - (예정)

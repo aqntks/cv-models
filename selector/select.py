@@ -10,6 +10,7 @@ from classification.mobilenetv2 import MobileNetV2
 from classification.mobilenetv3 import MobileNetV3
 from classification.alexnet import AlexNet
 from classification.googlenet import GoogLeNet
+from classification.squeezenet import SqueezeNet
 
 from optimizer.optimizer import optim
 
@@ -31,7 +32,10 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
         model = AlexNet().to(DEVICE)
     if model_name == 'googlenet':      # 수정 해야함
         model = GoogLeNet().to(DEVICE)
-
+    if model_name == 'squeezenet1_0':
+        model = SqueezeNet('1_0').to(DEVICE)
+    if model_name == 'squeezenet1_1':
+        model = SqueezeNet('1_1').to(DEVICE)
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()
