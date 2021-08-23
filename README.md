@@ -1,12 +1,12 @@
 # Computer Vision을 위한 딥러닝 모델 구현 with Pytorch
 ##  모델 학습 (Model Train)
     python main.py --mode classification --model resnet --optim adam --data CIFAR_10 --batch 32 --epoch 10
-mode : 모델 종류 < classification, detection, segmentation >  
-model : 학습 모델 < mlp, cnn, resnet, alexnet, yolov5 etc >  
-optim : 옵티마이저 < adam, SGD, adagrad, RMSprop etc >  
-data : 학습 데이터 < CIFAR_10, SVHN, Places365, STL10 etc >  
-batch : 배치 사이즈  
-epoch : 세대 수  
+--mode : 모델 유형  < classification, detection, segmentation >  
+--model : 학습 모델 < mlp, cnn, resnet, alexnet, yolov5 etc >  
+--optim : 옵티마이저 < adam, SGD, adagrad, RMSprop etc >  
+--data : 학습 데이터 < CIFAR_10, SVHN, Places365, STL10 etc >  
+--batch : 배치 사이즈  
+--epoch : 세대 수  
 ### * 분류 모델 (Classification) *
 1. MLP (Multi Layer Perceptron) - (완료)
 2. CNN (Convolutional Neural Network) - (완료)
