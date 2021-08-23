@@ -76,7 +76,6 @@ class SqueezeNet(nn.Module):
             raise ValueError("Unsupported SqueezeNet version {version}:"
                              "1_0 or 1_1 expected".format(version=version))
 
-        # Final convolution is initialized differently from the rest
         final_conv = nn.Conv2d(512, self.num_classes, kernel_size=1)
         self.classifier = nn.Sequential(
             nn.Dropout(p=0.5),
