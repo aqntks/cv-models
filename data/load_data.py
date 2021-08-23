@@ -20,4 +20,88 @@ def data(data_name):
                                             transforms.ToTensor(),
                                             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
 
+    # if data_name == 'CIFAR_100':
+    #     train_dataset = datasets.CIFAR100(root="data/CIFAR_100",
+    #                                      train=True,
+    #                                      download=True,
+    #                                      transform=transforms.Compose([
+    #                                          transforms.RandomHorizontalFlip(),
+    #                                          transforms.ToTensor(),
+    #                                          transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+    #
+    #     test_dataset = datasets.CIFAR100(root="data/CIFAR_100",
+    #                                     train=False,
+    #                                     transform=transforms.Compose([
+    #                                         transforms.RandomHorizontalFlip(),
+    #                                         transforms.ToTensor(),
+    #                                         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+
+    if data_name == 'SVHN':
+        train_dataset = datasets.SVHN(root="data/SVHN",
+                                         split='train',
+                                         download=True,
+                                         transform=transforms.Compose([
+                                             transforms.RandomHorizontalFlip(),
+                                             transforms.ToTensor(),
+                                             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+
+        test_dataset = datasets.SVHN(root="data/SVHN",
+                                        split='test',
+                                        download=True,
+                                        transform=transforms.Compose([
+                                            transforms.RandomHorizontalFlip(),
+                                            transforms.ToTensor(),
+                                            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+
+    # if data_name == 'CelebA':
+    #     train_dataset = datasets.CelebA(root="data/CelebA",
+    #                                      split='train-standard',
+    #                                      download=True,
+    #                                      transform=transforms.Compose([
+    #                                          transforms.RandomHorizontalFlip(),
+    #                                          transforms.ToTensor(),
+    #                                          transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+    #
+    #     test_dataset = datasets.CelebA(root="data/CelebA",
+    #                                     split='val',
+    #                                     download=True,
+    #                                     transform=transforms.Compose([
+    #                                         transforms.RandomHorizontalFlip(),
+    #                                         transforms.ToTensor(),
+    #                                         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+
+    if data_name == 'Places365':
+        train_dataset = datasets.Places365(root="data/Places365",
+                                         split='train-standard',
+                                         download=True,
+                                         transform=transforms.Compose([
+                                             transforms.RandomHorizontalFlip(),
+                                             transforms.ToTensor(),
+                                             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+
+        test_dataset = datasets.Places365(root="data/Places365",
+                                        split='val',
+                                        download=True,
+                                        transform=transforms.Compose([
+                                            transforms.RandomHorizontalFlip(),
+                                            transforms.ToTensor(),
+                                            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+
+    if data_name == 'STL10':
+        train_dataset = datasets.STL10(root="data/STL10",
+                                         split='train',
+                                         download=True,
+                                         transform=transforms.Compose([
+                                             transforms.RandomHorizontalFlip(),
+                                             transforms.ToTensor(),
+                                             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+
+        test_dataset = datasets.STL10(root="data/STL10",
+                                        split='test',
+                                        download=True,
+                                        transform=transforms.Compose([
+                                            transforms.RandomHorizontalFlip(),
+                                            transforms.ToTensor(),
+                                            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]))
+
     return train_dataset, test_dataset
