@@ -1,4 +1,12 @@
 # Computer Vision을 위한 딥러닝 모델 구현 with Pytorch
+#### - 요구 조건 -
+[Python>=3.6.0](https://www.python.org/) and [PyTorch>=1.7](https://pytorch.org/)
+## 설치 (Install)
+    git clone https://github.com/aqntks/cv-models
+    
+    cd cv-models     
+    
+    pip install -r requirements.txt
 ##  모델 학습 (Model Train)
     python main.py --mode classification --model resnet --optim adam --data CIFAR_10 --batch 32 --epoch 10
 --mode : 모델 유형  < classification, detection, segmentation >  
