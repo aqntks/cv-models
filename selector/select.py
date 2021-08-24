@@ -13,6 +13,7 @@ from classification.squeezenet import SqueezeNet
 from classification.vgg import makeVgg
 from classification.mnasnet import MNASNet
 from classification.shufflenetv2 import ShuffleNetV2
+from classification.densenet import DenseNet
 
 from optimizer.optimizer import optim
 
@@ -54,6 +55,16 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
         if version == 'x2.0':
             channels = [24, 244, 488, 976, 2048]
         model = ShuffleNetV2(channels)
+    if model_name.split('-')[0] == 'densenet':
+        version = model_name.split('-')[1]
+        if version == '121':
+            model = DenseNet(32, (6, 12, 24, 16), 64)
+        if version == '161':
+            model = DenseNet(48, (6, 12, 36, 24), 96)
+        if version == '169':
+            model = DenseNet(32, (6, 12, 32, 32), 64)
+        if version == '201':
+            model = DenseNet(32, (6, 12, 48, 32), 64)
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()
