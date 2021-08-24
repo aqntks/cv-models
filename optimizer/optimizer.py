@@ -2,7 +2,7 @@ import torch
 
 
 def optim(name, model):
-    if name == 'Adam':
+    if name == 'adam':
         optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     if name == "SGD":
         optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9)

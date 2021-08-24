@@ -14,6 +14,7 @@ from classification.vgg import makeVgg
 from classification.mnasnet import MNASNet
 from classification.shufflenetv2 import ShuffleNetV2
 from classification.densenet import DenseNet
+# from classification.inception import Inception3
 
 from optimizer.optimizer import optim
 
@@ -43,7 +44,7 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
         model_name = model_name.split('-')[0] + model_name.split('-')[1]
         model = makeVgg(model_name).to(DEVICE)
     if model_name.split('-')[0] == 'mnasnet':
-        model = MNASNet(float(model_name.split('-')[1]))
+        model = MNASNet(float(model_name.split('-')[1])).to(DEVICE)
     if model_name.split('-')[0] == 'shufflenetv2':
         version = model_name.split('-')[1]
         if version == 'x0.5':
@@ -54,17 +55,19 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
             channels = [24, 176, 352, 704, 1024]
         if version == 'x2.0':
             channels = [24, 244, 488, 976, 2048]
-        model = ShuffleNetV2(channels)
+        model = ShuffleNetV2(channels).to(DEVICE)
     if model_name.split('-')[0] == 'densenet':
         version = model_name.split('-')[1]
         if version == '121':
-            model = DenseNet(32, (6, 12, 24, 16), 64)
+            model = DenseNet(32, (6, 12, 24, 16), 64).to(DEVICE)
         if version == '161':
-            model = DenseNet(48, (6, 12, 36, 24), 96)
+            model = DenseNet(48, (6, 12, 36, 24), 96).to(DEVICE)
         if version == '169':
-            model = DenseNet(32, (6, 12, 32, 32), 64)
+            model = DenseNet(32, (6, 12, 32, 32), 64).to(DEVICE)
         if version == '201':
-            model = DenseNet(32, (6, 12, 48, 32), 64)
+            model = DenseNet(32, (6, 12, 48, 32), 64).to(DEVICE)
+    # if model_name == 'inception':
+    #     model = Inception3().to(DEVICE)
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()

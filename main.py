@@ -56,8 +56,8 @@ def main(opt):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', type=str, default='classification')
-    parser.add_argument('--model', type=str, default='resnet')
-    parser.add_argument('--optim', type=str, default='Adam')
+    parser.add_argument('--model', type=str, default='inception')
+    parser.add_argument('--optim', type=str, default='adam')
     parser.add_argument('--data', type=str, default='CIFAR_10')
     parser.add_argument('--batch', type=int, default=32)
     parser.add_argument('--epoch', type=int, default=10)
