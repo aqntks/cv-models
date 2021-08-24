@@ -54,6 +54,8 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
         print("\n[EPOCH: {}], \tTest Loss: {:.4f}, \tTest Accuracy: {:.2f} % \n".format(
             epoch, test_loss, test_accuracy))
 
+    return model
+
 
 def detection():
     print("준비중인 모델입니다...")
