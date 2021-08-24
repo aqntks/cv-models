@@ -8,7 +8,7 @@ from classification.resnet import ResNet
 from classification.mobilenetv2 import MobileNetV2
 from classification.mobilenetv3 import MobileNetV3
 from classification.alexnet import AlexNet
-from classification.googlenet import GoogLeNet
+# from classification.googlenet import GoogLeNet
 from classification.squeezenet import SqueezeNet
 from classification.vgg import makeVgg
 from classification.mnasnet import MNASNet
