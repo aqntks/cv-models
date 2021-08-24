@@ -39,9 +39,9 @@
 |ResNet (Residual Neural Network)|resnet|[[arxiv]](https://arxiv.org/pdf/1512.03385.pdf)|(O)|
 |SqueezeNet|squeezenet1_0, squeezenet1_1|[[arxiv]](https://arxiv.org/pdf/1602.07360.pdf)|(O)|
 |MobileNetV2|mobilenetv2|[[arxiv]](https://arxiv.org/pdf/1801.04381.pdf)|(O)|
-|DenseNet|densenet-121, densenet-161, densenet-169, densenet-201|[[arxiv]](https://arxiv.org/pdf/1608.06993.pdf)|(O)|
-|ShuffleNetV2|shufflenetv2-x0.5, shufflenetv2-x1.0, shufflenetv2-x1.5, shufflenetv2-x2.0|[[arxiv]](https://arxiv.org/pdf/1807.11164.pdf)|(O)|
-|MnasNet|mnasnet-0.5, mnasnet-0.75, mnasnet-1.0, mnasnet-1.3|[[arxiv]](https://arxiv.org/pdf/1807.11626.pdf)|(O)|
+|DenseNet|densenet-121, densenet-161, </br> densenet-169, densenet-201|[[arxiv]](https://arxiv.org/pdf/1608.06993.pdf)|(O)|
+|ShuffleNetV2|shufflenetv2-x0.5, shufflenetv2-x1.0, </br> shufflenetv2-x1.5, shufflenetv2-x2.0|[[arxiv]](https://arxiv.org/pdf/1807.11164.pdf)|(O)|
+|MnasNet|mnasnet-0.5, mnasnet-0.75, </br> mnasnet-1.0, mnasnet-1.3|[[arxiv]](https://arxiv.org/pdf/1807.11626.pdf)|(O)|
 |MobileNetV3|mobilenetv3s, mobilenetv3l|[[arxiv]](https://arxiv.org/pdf/1905.02244.pdf)|(O)|
 |vit|-|-|(준비중)|
 
