@@ -12,6 +12,7 @@ from classification.alexnet import AlexNet
 from classification.squeezenet import SqueezeNet
 from classification.vgg import makeVgg
 from classification.mnasnet import MNASNet
+from classification.shufflenetv2 import ShuffleNetV2
 
 from optimizer.optimizer import optim
 
@@ -42,6 +43,17 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
         model = makeVgg(model_name).to(DEVICE)
     if model_name.split('-')[0] == 'mnasnet':
         model = MNASNet(float(model_name.split('-')[1]))
+    if model_name.split('-')[0] == 'shufflenetv2':
+        version = model_name.split('-')[1]
+        if version == 'x0.5':
+            channels = [24, 48, 96, 192, 1024]
+        if version == 'x1.0':
+            channels = [24, 116, 232, 464, 1024]
+        if version == 'x1.5':
+            channels = [24, 176, 352, 704, 1024]
+        if version == 'x2.0':
+            channels = [24, 244, 488, 976, 2048]
+        model = ShuffleNetV2(channels)
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()
