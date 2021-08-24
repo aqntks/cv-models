@@ -21,7 +21,7 @@
 > --mode : <classification, detection, segmentation >　　　　　 # 모델 유형  
 --model : < resnet, mobilenetv3s, vgg-13, mnasnet-0.5 etc > &nbsp;&nbsp;  # 학습 모델   
 --optim : < adam, SGD, AdaGrad, RMSprop etc > 　　&nbsp;&nbsp;　　　 # 옵티마이저  
---data :  < CIFAR_10, SVHN, Places365, STL10 etc >　　　　　  # 학습 데이터  
+--data &nbsp;&nbsp;:  < CIFAR_10, SVHN, Places365, STL10 etc >　　　　　  # 학습 데이터  
 --batch 　　　　　　　　　　　　　　　　　　　　　　&nbsp;　　# 배치 사이즈  
 --epoch 　　　　　　　　　　　　　　　　　　　　　　　　# 세대 수  
 
@@ -30,20 +30,20 @@
 #### * 분류 모델 (Classification) *
 |MODEL|arg|paper|지원|
 |---|---|---|---|
-|MLP (Multi Layer Perceptron)|mlp|<center>-|<center>(O)|
-|CNN (Convolutional Neural Network)|cnn|<center>-|<center>(O)|
-|AlexNet|alexnet (이미지 사이즈 >= 256) |[[arxiv]](https://arxiv.org/pdf/1404.5997.pdf)|<center>(O)|
-|GoogleNet|<center>-|[[arxiv]](https://arxiv.org/abs/1409.4842)|<center>(준비중)|
-|VGG|vgg-11, vgg-11_bn, vgg-13, vgg-13_bn, </br> vgg-16, vgg-16_bn, vgg-19, vgg-19_bn|[[arxiv]](https://arxiv.org/pdf/1409.1556.pdf)|<center>(O)|
-|Inception|<center>-|[[arxiv]](https://arxiv.org/pdf/1512.00567.pdf)|<center>(준비중)|
-|ResNet (Residual Neural Network)|resnet|[[arxiv]](https://arxiv.org/pdf/1512.03385.pdf)|<center>(O)|
-|SqueezeNet|squeezenet1_0, squeezenet1_1|[[arxiv]](https://arxiv.org/pdf/1602.07360.pdf)|<center>(O)|
-|MobileNetV2|mobilenetv2|[[arxiv]](https://arxiv.org/pdf/1801.04381.pdf)|<center>(O)|
-|DenseNet|densenet-121, densenet-161, </br> densenet-169, densenet-201|[[arxiv]](https://arxiv.org/pdf/1608.06993.pdf)|<center>(O)|
-|ShuffleNetV2|shufflenetv2-x0.5, shufflenetv2-x1.0, </br> shufflenetv2-x1.5, shufflenetv2-x2.0|[[arxiv]](https://arxiv.org/pdf/1807.11164.pdf)|<center>(O)|
-|MnasNet|mnasnet-0.5, mnasnet-0.75, </br> mnasnet-1.0, mnasnet-1.3|[[arxiv]](https://arxiv.org/pdf/1807.11626.pdf)|<center>(O)|
-|MobileNetV3|mobilenetv3s, mobilenetv3l|[[arxiv]](https://arxiv.org/pdf/1905.02244.pdf)|<center>(O)|
-|vit|<center>-|<center>-|<center>(준비중)|
+|MLP (Multi Layer Perceptron)|mlp|<center>-</center>|<center>(O)</center>|
+|CNN (Convolutional Neural Network)|cnn|<center>-</center>|<center>(O)</center>|
+|AlexNet|alexnet (이미지 사이즈 >= 256) |[[arxiv]](https://arxiv.org/pdf/1404.5997.pdf)|<center>(O)</center>|
+|GoogleNet|<center>-</center>|[[arxiv]](https://arxiv.org/abs/1409.4842)|<center>(준비중)</center>|
+|VGG|vgg-11, vgg-11_bn, vgg-13, vgg-13_bn, </br> vgg-16, vgg-16_bn, vgg-19, vgg-19_bn|[[arxiv]](https://arxiv.org/pdf/1409.1556.pdf)|<center>(O)</center>|
+|Inception|<center>-</center>|[[arxiv]](https://arxiv.org/pdf/1512.00567.pdf)|<center>(준비중)</center>|
+|ResNet (Residual Neural Network)|resnet|[[arxiv]](https://arxiv.org/pdf/1512.03385.pdf)|<center>(O)</center>|
+|SqueezeNet|squeezenet1_0, squeezenet1_1|[[arxiv]](https://arxiv.org/pdf/1602.07360.pdf)|<center>(O)</center>|
+|MobileNetV2|mobilenetv2|[[arxiv]](https://arxiv.org/pdf/1801.04381.pdf)|<center>(O)</center>|
+|DenseNet|densenet-121, densenet-161, </br> densenet-169, densenet-201|[[arxiv]](https://arxiv.org/pdf/1608.06993.pdf)|<center>(O)</center>|
+|ShuffleNetV2|shufflenetv2-x0.5, shufflenetv2-x1.0, </br> shufflenetv2-x1.5, shufflenetv2-x2.0|[[arxiv]](https://arxiv.org/pdf/1807.11164.pdf)|<center>(O)</center>|
+|MnasNet|mnasnet-0.5, mnasnet-0.75, </br> mnasnet-1.0, mnasnet-1.3|[[arxiv]](https://arxiv.org/pdf/1807.11626.pdf)|<center>(O)</center>|
+|MobileNetV3|mobilenetv3s, mobilenetv3l|[[arxiv]](https://arxiv.org/pdf/1905.02244.pdf)|<center>(O)</center>|
+|vit|<center>-</center>|<center>-</center>|<center>(준비중)</center>|
 
 
 #### * 탐지 모델 (Detection) *
@@ -59,3 +59,5 @@
 6. DeepLabV3+ - (예정)
 7. ReSeg - (예정)
 #### * 생산적 적대 신경망 (GAN) *
+##  예측 검출 (Model Predict)
+    python predict.py --model resnet --weight result/model.pt --img data/test.jpg
