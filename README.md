@@ -34,7 +34,7 @@
 |CNN (Convolutional Neural Network)|cnn|-|(O)|
 |AlexNet|alexnet (이미지 사이즈 >= 256) |[[arxiv]](https://arxiv.org/pdf/1404.5997.pdf)|(O)|
 |GoogleNet|-|[[arxiv]](https://arxiv.org/abs/1409.4842)|(준비중)|
-|VGG|vgg-11, vgg-11_bn, vgg-13, vgg-13_bn, vgg-16, vgg-16_bn, vgg-19, vgg-19_bn|[[arxiv]](https://arxiv.org/pdf/1409.1556.pdf)|(O)|
+|VGG|vgg-11, vgg-11_bn, vgg-13, vgg-13_bn, </br> vgg-16, vgg-16_bn, vgg-19, vgg-19_bn|[[arxiv]](https://arxiv.org/pdf/1409.1556.pdf)|(O)|
 |Inception|-|[[arxiv]](https://arxiv.org/pdf/1512.00567.pdf)|(준비중)|
 |ResNet (Residual Neural Network)|resnet|[[arxiv]](https://arxiv.org/pdf/1512.03385.pdf)|(O)|
 |SqueezeNet|squeezenet1_0, squeezenet1_1|[[arxiv]](https://arxiv.org/pdf/1602.07360.pdf)|(O)|
