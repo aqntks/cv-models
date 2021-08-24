@@ -19,7 +19,7 @@ from classification.densenet import DenseNet
 from optimizer.optimizer import optim
 
 
-def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, test_loader):
+def get_classification(model_name, DEVICE):
     if model_name == 'mlp':
         model = MLP().to(DEVICE)
     if model_name == 'cnn':
@@ -68,6 +68,12 @@ def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, tes
             model = DenseNet(32, (6, 12, 48, 32), 64).to(DEVICE)
     # if model_name == 'inception':
     #     model = Inception3().to(DEVICE)
+
+    return model
+
+
+def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, test_loader):
+    model = get_classification(model_name, DEVICE)
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()
