@@ -1,4 +1,8 @@
 # Computer Vision을 위한 딥러닝 모델 구현 with Pytorch
+![issue badge](https://img.shields.io/github/license/aqntks/cv-models?&color=blue)
+![issue badge](https://img.shields.io/badge/build-passing-brightgreen)
+![issue badge](https://img.shields.io/badge/%ED%95%9C%EA%B5%AD%EC%96%B4-%EC%A7%80%EC%9B%90-orange)
+[![LinkedIn Badge](http://img.shields.io/badge/LinkedIn-@InpyoHong-0072b1?style=flat&logo=linkedin&link=https://www.linkedin.com/in/inpyo-hong-886781212/)](https://www.linkedin.com/in/inpyo-hong-886781212/)
 #### - 요구 조건 -
 [Python>=3.6.0](https://www.python.org/) and [PyTorch>=1.7](https://pytorch.org/)
 ## 설치 (Install)
