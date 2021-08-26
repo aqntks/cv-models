@@ -18,13 +18,13 @@
 ##  모델 학습 (Model Train)
     python main.py --mode classification --model resnet --optim adam --data CIFAR_10 --batch 32 --epoch 10
 - args
-> --mode : <classification, detection, segmentation >　　　　　 # 모델 유형  
+> --mode : < classification, detection, segmentation >　　　　　 # 모델 유형  
 --model : < resnet, mobilenetv3s, vgg-13, mnasnet-0.5 etc > &nbsp;&nbsp;  # 학습 모델   
 --optim : < adam, SGD, AdaGrad, RMSprop etc > 　　&nbsp;&nbsp;　　　 # 옵티마이저  
 --data &nbsp;&nbsp;:  < CIFAR_10, SVHN, Places365, STL10 etc >　　　　　  # 학습 데이터  
 --batch 　　　　　　　　　　　　　　　　　　　　　　&nbsp;　　# 배치 사이즈  
 --epoch 　　　　　　　　　　　　　　　　　　　　　　　　# 세대 수  
-
+--img 　　　　　　　　　　　　　　　　　　　　　　　　# 이미지 사이즈 (지정 안하면 기본 데이터 사이즈)
 ## 모델 (MODELS)
 
 #### * 분류 모델 (Classification) *
@@ -43,7 +43,7 @@
 |ShuffleNetV2|shufflenetv2-x0.5, shufflenetv2-x1.0, </br> shufflenetv2-x1.5, shufflenetv2-x2.0|[[arxiv]](https://arxiv.org/pdf/1807.11164.pdf)|<center>(O)</center>|
 |MnasNet|mnasnet-0.5, mnasnet-0.75, </br> mnasnet-1.0, mnasnet-1.3|[[arxiv]](https://arxiv.org/pdf/1807.11626.pdf)|<center>(O)</center>|
 |MobileNetV3|mobilenetv3s, mobilenetv3l|[[arxiv]](https://arxiv.org/pdf/1905.02244.pdf)|<center>(O)</center>|
-|vit|<center>-</center>|<center>-</center>|<center>(준비중)</center>|
+|VIT|<center>vit (이미지 사이즈 = 224)</center>|[[paper]](https://openreview.net/pdf?id=YicbFdNTTy)|<center>(O)</center>|
 
 
 #### * 탐지 모델 (Detection) *
@@ -59,5 +59,3 @@
 6. DeepLabV3+ - (예정)
 7. ReSeg - (예정)
 #### * 생산적 적대 신경망 (GAN) *
-##  예측 검출 (Model Predict)
-    python predict.py --model resnet --weight result/model.pt --img data/test.jpg
