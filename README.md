@@ -43,15 +43,17 @@
 |ShuffleNetV2|shufflenetv2-x0.5, shufflenetv2-x1.0, </br> shufflenetv2-x1.5, shufflenetv2-x2.0|[[arxiv]](https://arxiv.org/pdf/1807.11164.pdf)|<center>(O)</center>|
 |MnasNet|mnasnet-0.5, mnasnet-0.75, </br> mnasnet-1.0, mnasnet-1.3|[[arxiv]](https://arxiv.org/pdf/1807.11626.pdf)|<center>(O)</center>|
 |MobileNetV3|mobilenetv3s, mobilenetv3l|[[arxiv]](https://arxiv.org/pdf/1905.02244.pdf)|<center>(O)</center>|
-|VIT|<center>vit (이미지 사이즈 = 224)</center>|[[paper]](https://openreview.net/pdf?id=YicbFdNTTy)|<center>(O)</center>|
-
+|VIT|vit (이미지 사이즈 = 224)|[[paper]](https://openreview.net/pdf?id=YicbFdNTTy)|<center>(O)</center>|
 
 #### * 탐지 모델 (Detection) *
-1. yolov4 - (예정)
-2. yolov5 - (예정)
-3. Faster RCNN - (예정)
-4. Mask R-CNN - (예정)
-5. SSD - (예정)
+|MODEL|arg|paper|지원|
+|---|---|---|---|
+|Faster R-CNN|-|<center>-</center>|<center>(준비중)</center>|
+|Mask R-CNN|-|<center>-</center>|<center>(준비중)</center>|
+|SSD|-|<center>-</center>|<center>(준비중)</center>|
+|yolov4|-|<center>-</center>|<center>(준비중)</center>|
+|yolov5|-|<center>-</center>|<center>(준비중)</center>|
+
 #### * 분할 모델 (Segmentation) *
 1. U-Net - (예정)
 2. FCN - (예정)
@@ -59,3 +61,5 @@
 6. DeepLabV3+ - (예정)
 7. ReSeg - (예정)
 #### * 생산적 적대 신경망 (GAN) *
+##  예측 결과 (Prediction results)
+    python predict.py --model resnet --weight result/model.pt --img data/test.jpg

@@ -52,7 +52,7 @@ def loss_fn(
     teacher_probs = ((teacher_logits - centers) / teacher_temp).softmax(dim = -1)
     return - (teacher_probs * torch.log(student_probs + eps)).sum(dim = -1).mean()
 
-# augmentation utils
+# augmentation ssd
 
 class RandomApply(nn.Module):
     def __init__(self, fn, p):

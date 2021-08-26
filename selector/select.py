@@ -48,7 +48,6 @@ def vit_train(DEVICE, img_size, class_count):
     return model
 
 
-
 def get_classification(model_name, DEVICE, img_size, class_count):
     if model_name == 'mlp':
         model = MLP().to(DEVICE)
