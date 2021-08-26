@@ -1,5 +1,5 @@
 import torch.nn as nn
-
+import torch
 from selector.cls_train import train, evaluate
 
 from classification.mlp import MLP
@@ -48,7 +48,7 @@ def vit_train(DEVICE, img_size, class_count):
     return model
 
 
-def get_classification(model_name, DEVICE, img_size, class_count):
+def get_classification(model_name, DEVICE, img_size, class_count, dropout, memoryEF):
     if model_name == 'mlp':
         model = MLP().to(DEVICE)
     if model_name == 'cnn':
@@ -73,7 +73,7 @@ def get_classification(model_name, DEVICE, img_size, class_count):
         model_name = model_name.split('-')[0] + model_name.split('-')[1]
         model = makeVgg(model_name).to(DEVICE)
     if model_name.split('-')[0] == 'mnasnet':
-        model = MNASNet(float(model_name.split('-')[1])).to(DEVICE)
+        model = MNASNet(float(model_name.split('-')[1]), dropout=dropout).to(DEVICE)
     if model_name.split('-')[0] == 'shufflenetv2':
         version = model_name.split('-')[1]
         if version == 'x0.5':
@@ -88,13 +88,13 @@ def get_classification(model_name, DEVICE, img_size, class_count):
     if model_name.split('-')[0] == 'densenet':
         version = model_name.split('-')[1]
         if version == '121':
-            model = DenseNet(32, (6, 12, 24, 16), 64).to(DEVICE)
+            model = DenseNet(32, (6, 12, 24, 16), 64, drop_rate=dropout, memory_efficient=memoryEF).to(DEVICE)
         if version == '161':
-            model = DenseNet(48, (6, 12, 36, 24), 96).to(DEVICE)
+            model = DenseNet(48, (6, 12, 36, 24), 96, drop_rate=dropout, memory_efficient=memoryEF).to(DEVICE)
         if version == '169':
-            model = DenseNet(32, (6, 12, 32, 32), 64).to(DEVICE)
+            model = DenseNet(32, (6, 12, 32, 32), 64, drop_rate=dropout, memory_efficient=memoryEF).to(DEVICE)
         if version == '201':
-            model = DenseNet(32, (6, 12, 48, 32), 64).to(DEVICE)
+            model = DenseNet(32, (6, 12, 48, 32), 64, drop_rate=dropout, memory_efficient=memoryEF).to(DEVICE)
     if model_name == 'vit':
         model = vit_train(DEVICE, img_size, class_count)
     # if model_name == 'inception':
@@ -103,11 +103,16 @@ def get_classification(model_name, DEVICE, img_size, class_count):
     return model
 
 
-def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, test_loader, img_size, class_count):
-    model = get_classification(model_name, DEVICE, img_size, class_count)
+def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, test_loader, img_size, class_count, opt):
+    weights = opt.weights
+    lr, momentum, dropout, memoryEF = opt.lr, opt.momentum, opt.dropout, opt.memoryEF
+    model = get_classification(model_name, DEVICE, img_size, class_count, dropout, memoryEF)
 
-    optimizer = optim(optimizer_name, model)
+    optimizer = optim(optimizer_name, model, lr, momentum)
     criterion = nn.CrossEntropyLoss()
+
+    if weights != '':
+        model.load_state_dict(torch.load(weights))
 
     print(model)
 

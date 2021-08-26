@@ -43,7 +43,7 @@ def main(opt):
 
     try:
         if mode == 'classification':
-            model = classification(model_name, optimizer, device, epochs, train_loader, test_loader, img_size, class_count)
+            model = classification(model_name, optimizer, device, epochs, train_loader, test_loader, img_size, class_count, opt)
             model_save(model, state_dict=True)
         if mode == 'detection':
             detection()
@@ -60,6 +60,7 @@ if __name__ == "__main__":
     parser.add_argument('--model', type=str, default='resnet')
     parser.add_argument('--optim', type=str, default='adam')
     parser.add_argument('--data', type=str, default='CIFAR_10')
+    parser.add_argument('--weights', type=str, default='', help='전이학습을 이용하려면 학습을 원하는 모델 구조로 사전 학습된 모델을 넣어주세요')
     parser.add_argument('--batch', type=int, default=32)
     parser.add_argument('--epoch', type=int, default=10)
     parser.add_argument('--img', type=int, default=-1)
