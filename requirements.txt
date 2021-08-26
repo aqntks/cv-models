@@ -5,3 +5,9 @@ scipy>=1.4.1
 torch>=1.7.0
 torchvision>=0.8.1
 einops>=0.3
+opencv-python
+cython
+pycocotools
+# 윈도우에서 pycocotools가 설치 안될 경우 아나콘다 프롬프트에서 아래 방법으로 설치
+# pip install "git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI" 또는
+# pip install pycocotools-windows
