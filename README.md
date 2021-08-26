@@ -5,7 +5,7 @@
 [![LinkedIn Badge](http://img.shields.io/badge/LinkedIn-@InpyoHong-0072b1?style=flat&logo=linkedin&link=https://www.linkedin.com/in/inpyo-hong-886781212/)](https://www.linkedin.com/in/inpyo-hong-886781212/)
 
 명령어 한 줄로 간편하게 딥러닝 모델을 학습하세요  
-손쉽게 다양한 모델들을 학습해볼 수 있습니다.
+손쉽게 다양한 모델들을 학습해볼 수 있습니다
 
 모델의 미세 조정을 원하시면 [하이퍼 파라미터 튜닝](##-하이퍼-파라미터-튜닝-(model-tuning)) 단계로 이동하세요
 
@@ -68,17 +68,18 @@
     python predict.py --model resnet --weight result/model.pt --img data/test.jpg
 
 ## 전이학습
-- 사전 학습된 모델이 있다면 --weights 인수에 사전 학습 모델을 추가해 주세요  
+사전 학습된 모델이 있다면 --weights 인수에 사전 학습 모델을 추가해 주세요  
 학습을 위해 선택한 모델과 같은 구조로 학습한 모델이어야 합니다.
 
     
     python main.py --weights pretrained_model.pth --densenet-121 --mode classification
 
 ## 하이퍼 파라미터 튜닝 (model tuning)
-    python export.py
-- export.py를 통해 학습 할 모델의 하이퍼 파라미터 튜닝을 진행하세요
-
     
+    python export.py
+
+export.py를 통해 학습 할 모델의 하이퍼 파라미터 튜닝을 진행하세요
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', type=str, default='classification')
     parser.add_argument('--model', type=str, default='densenet-169')
