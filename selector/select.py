@@ -18,8 +18,38 @@ from classification.densenet import DenseNet
 
 from optimizer.optimizer import optim
 
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+from transformer.linformer import Linformer
+from classification.vit.efficient import ViT
 
-def get_classification(model_name, DEVICE):
+
+def vit_train(DEVICE, img_size, class_count):
+    # Linformer
+    efficient_transformer = Linformer(
+        dim=128,
+        seq_len=49 + 1,  # 7x7 patches + 1 cls-token
+        depth=12,
+        heads=8,
+        k=64
+    )
+
+    # vit
+    model = ViT(
+        dim=128,
+        image_size=img_size,
+        patch_size=32,
+        num_classes=class_count,
+        transformer=efficient_transformer,
+        channels=3,
+    ).to(DEVICE)
+
+    return model
+
+
+
+def get_classification(model_name, DEVICE, img_size, class_count):
     if model_name == 'mlp':
         model = MLP().to(DEVICE)
     if model_name == 'cnn':
@@ -66,14 +96,16 @@ def get_classification(model_name, DEVICE):
             model = DenseNet(32, (6, 12, 32, 32), 64).to(DEVICE)
         if version == '201':
             model = DenseNet(32, (6, 12, 48, 32), 64).to(DEVICE)
+    if model_name == 'vit':
+        model = vit_train(DEVICE, img_size, class_count)
     # if model_name == 'inception':
     #     model = Inception3().to(DEVICE)
 
     return model
 
 
-def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, test_loader):
-    model = get_classification(model_name, DEVICE)
+def classification(model_name, optimizer_name, DEVICE, EPOCHS, train_loader, test_loader, img_size, class_count):
+    model = get_classification(model_name, DEVICE, img_size, class_count)
 
     optimizer = optim(optimizer_name, model)
     criterion = nn.CrossEntropyLoss()

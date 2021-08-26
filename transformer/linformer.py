@@ -3,7 +3,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
-from reversible import ReversibleSequence, SequentialSequence
+from transformer.reversible import ReversibleSequence, SequentialSequence
 
 # helper functions
 
