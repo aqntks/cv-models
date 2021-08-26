@@ -4,7 +4,10 @@
 ![issue badge](https://img.shields.io/badge/%ED%95%9C%EA%B5%AD%EC%96%B4-%EC%A7%80%EC%9B%90-orange)
 [![LinkedIn Badge](http://img.shields.io/badge/LinkedIn-@InpyoHong-0072b1?style=flat&logo=linkedin&link=https://www.linkedin.com/in/inpyo-hong-886781212/)](https://www.linkedin.com/in/inpyo-hong-886781212/)
 
-명령어 한 줄로 간편하게 다양한 딥러닝 모델을 학습하세요     
+명령어 한 줄로 간편하게 딥러닝 모델을 학습하세요  
+손쉽게 다양한 모델들을 학습해볼 수 있습니다.
+
+모델의 미세 조정을 원하시면 [하이퍼 파라미터 튜닝](##-하이퍼-파라미터-튜닝-(model-tuning)) 단계로 이동하세요
 
 #### - 요구 조건 (Requirements) -
 [Python>=3.6.0](https://www.python.org/) and [PyTorch>=1.7](https://pytorch.org/)
@@ -18,13 +21,13 @@
 ##  모델 학습 (Model Train)
     python main.py --mode classification --model resnet --optim adam --data CIFAR_10 --batch 32 --epoch 10
 - args
-> --mode : < classification, detection, segmentation >　　　　　 # 모델 유형  
+> --mode : < classification, detection, segmentation >　　　　　# 모델 유형  
 --model : < resnet, mobilenetv3s, vgg-13, mnasnet-0.5 etc > &nbsp;&nbsp;  # 학습 모델   
 --optim : < adam, SGD, AdaGrad, RMSprop etc > 　　&nbsp;&nbsp;　　　 # 옵티마이저  
---data &nbsp;&nbsp;:  < CIFAR_10, SVHN, Places365, STL10 etc >　　　　　  # 학습 데이터  
+--data &nbsp;&nbsp;:  < CIFAR_10, SVHN, Places365, STL10 etc >　　　　　# 학습 데이터  
 --batch 　　　　　　　　　　　　　　　　　　　　　　&nbsp;　　# 배치 사이즈  
 --epoch 　　　　　　　　　　　　　　　　　　　　　　　　# 세대 수  
---img 　　　　　　　　　　　　　　　　　　　　　　　　# 이미지 사이즈 (지정 안하면 기본 데이터 사이즈)
+--img 　　　　　　　　　　　　　　　　　　　　　　　　　# 이미지 사이즈 (지정 안하면 기본 데이터 사이즈)
 ## 모델 (MODELS)
 
 #### * 분류 모델 (Classification) *
@@ -63,3 +66,29 @@
 #### * 생산적 적대 신경망 (GAN) *
 ##  예측 결과 (Prediction results)
     python predict.py --model resnet --weight result/model.pt --img data/test.jpg
+
+## 전이학습
+- 사전 학습된 모델이 있다면 --weights 인수에 사전 학습 모델을 추가해 주세요  
+학습을 위해 선택한 모델과 같은 구조로 학습한 모델이어야 합니다.
+
+    
+    python main.py --weights pretrained_model.pth --densenet-121 --mode classification
+
+## 하이퍼 파라미터 튜닝 (model tuning)
+    python export.py
+- export.py를 통해 학습 할 모델의 하이퍼 파라미터 튜닝을 진행하세요
+
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--mode', type=str, default='classification')
+    parser.add_argument('--model', type=str, default='densenet-169')
+    parser.add_argument('--optim', type=str, default='adam')
+    parser.add_argument('--data', type=str, default='CIFAR_10')
+    parser.add_argument('--batch', type=int, default=32, help='batch size. 2의 배수를 추천합니다.')
+    parser.add_argument('--epoch', type=int, default=10, help='학습 세대 수')
+    parser.add_argument('--weights', type=str, default='', help='전이학습을 이용하려면 학습을 원하는 모델 구조로 사전 학습된 모델을 넣어주세요')
+    parser.add_argument('--img', type=int, default=-1, help='이미지 사이즈입니다. -1을 지정할 경우 기본 이미지 사이즈로 데이터를 다운받습니다.')
+    parser.add_argument('--lr', type=float, default='0.001', help='learning rate 학습률 수치입니다')
+    parser.add_argument('--momentum', type=float, default='0.937', help='SGD optimizer를 사용하는 경우 모멘텀 값을 설정하세요')
+    parser.add_argument('--dropout', type=float, default='0.2', help='MNASNet, DenseNet 지원. 레이어의 dropout 비율을 적용하세요')
+    parser.add_argument('--memoryEF', type=bool, default=False, help='DenseNet 지원. True를 설정하면 효율적인 메모리 학습이 가능합니다. 속도는 느려집니다')
