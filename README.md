@@ -7,7 +7,7 @@
 명령어 한 줄로 간편하게 딥러닝 모델을 학습하세요  
 손쉽게 다양한 모델들을 학습해볼 수 있습니다
 
-모델의 미세 조정을 원하시면 [하이퍼 파라미터 튜닝](##-하이퍼-파라미터-튜닝-(model-tuning)) 단계로 이동하세요
+모델의 미세 조정을 원하시면 [하이퍼 파라미터 튜닝](#하이퍼-파라미터-튜닝-model-tuning) 단계로 이동하세요
 
 #### - 요구 조건 (Requirements) -
 [Python>=3.6.0](https://www.python.org/) and [PyTorch>=1.7](https://pytorch.org/)
@@ -34,7 +34,7 @@
 |MODEL|arg|paper|지원|
 |---|---|---|---|
 |MLP (Multi Layer Perceptron)|mlp|<center>-</center>|<center>(O)</center>|
-|CNN (Convolutional Neural Network)|cnn|<center>-</center>|<center>(O)</center>|
+|CNN (Convolutional Neural Network)|cnn|[[paper]](http://yann.lecun.com/exdb/publis/pdf/lecun-89e.pdf)|<center>(O)</center>|
 |AlexNet|alexnet (이미지 사이즈 >= 256) |[[arxiv]](https://arxiv.org/pdf/1404.5997.pdf)|<center>(O)</center>|
 |GoogleNet|<center>-</center>|[[arxiv]](https://arxiv.org/abs/1409.4842)|<center>(준비중)</center>|
 |VGG|vgg-11, vgg-11_bn, vgg-13, vgg-13_bn, </br> vgg-16, vgg-16_bn, vgg-19, vgg-19_bn|[[arxiv]](https://arxiv.org/pdf/1409.1556.pdf)|<center>(O)</center>|
@@ -53,21 +53,23 @@
 |---|---|---|---|
 |Faster R-CNN|-|<center>-</center>|<center>(준비중)</center>|
 |Mask R-CNN|-|<center>-</center>|<center>(준비중)</center>|
-|SSD|-|<center>-</center>|<center>(준비중)</center>|
-|yolov4|-|<center>-</center>|<center>(준비중)</center>|
-|yolov5|-|<center>-</center>|<center>(준비중)</center>|
+|SSD|[[github]](https://github.com/amdegroot/ssd.pytorch)|<center>-</center>|<center>(준비중)</center>|
+|yolov4|[[arxiv]](https://arxiv.org/pdf/2004.10934.pdf)|<center>-</center>|<center>(준비중)</center>|
+|yolov5|[[github]](https://github.com/ultralytics/yolov5)|<center>-</center>|<center>(준비중)</center>|
 
 #### * 분할 모델 (Segmentation) *
 1. U-Net - (예정)
 2. FCN - (예정)
-5. DeepLabV3 - (예정)
-6. DeepLabV3+ - (예정)
-7. ReSeg - (예정)
+3. DeepLabV3 - (예정)
+4. DeepLabV3+ - (예정)
+5. ReSeg - (예정)
+
 #### * 생산적 적대 신경망 (GAN) *
+
 ##  예측 결과 (Prediction results)
     python predict.py --model resnet --weight result/model.pt --img data/test.jpg
 
-## 전이학습
+## 전이 학습 (Transfer Learning)
 사전 학습된 모델이 있다면 --weights 인수에 사전 학습 모델을 추가해 주세요  
 학습을 위해 선택한 모델과 같은 구조로 학습한 모델이어야 합니다.
 
