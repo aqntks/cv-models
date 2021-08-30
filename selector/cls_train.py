@@ -39,11 +39,14 @@ def evaluate(model, test_loader, criterion, DEVICE):
     return test_loss, test_accuracy
 
 
-def test(model, image, label, DEVICE):
+def test(model, image, DEVICE):
 
     model.eval()
     with torch.no_grad():
         image = image.to(DEVICE)
-        label = label.to(DEVICE)
+        # label = label.to(DEVICE)
+
         outputs = model(image)
-        _, predicted = torch.max(outputs.data, 1)
+        _, predicted = torch.max(outputs, 1)
+
+    return predicted
