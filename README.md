@@ -67,7 +67,27 @@
 #### * 생산적 적대 신경망 (GAN) *
 
 ##  예측 결과 (Prediction results)
+- 준비  
+    data/label.txt에 학습한 모델의 클래스 명을 정의하세요
+    
+
+    예) # data/label.txt
+    airplane
+    automobile
+    bird
+    cat
+    deer
+    dog
+    frog
+    horse
+    ship
+    truck
+
+- 검출
+  
+
     python predict.py --model resnet --weight result/model.pt --img data/test.jpg
+
 
 ## 전이 학습 (Transfer Learning)
 사전 학습된 모델이 있다면 --weights 인수에 사전 학습 모델을 추가해 주세요  
