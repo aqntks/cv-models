@@ -8,10 +8,15 @@ from torchvision import transforms
 from PIL import Image
 
 
-
-
 def predict(opt):
-    model_name, weight, img = opt.model, opt.pt, opt.img
+    model_name, weight, img, labels = opt.model, opt.pt, opt.img, opt.label
+
+    label = []
+    f = open('data/label.txt', 'r', encoding='utf-8')
+    lines = f.readlines()
+    for line in lines:
+        label.append(line)
+    f.close()
 
     if torch.cuda.is_available():
         device = torch.device('cuda')
@@ -22,12 +27,10 @@ def predict(opt):
     model = get_classification(model_name, device, 0, 0, 0, 0)
     model.load_state_dict(torch.load(weight, map_location=device))
 
-    # transform = transforms.Compose([
-    #             transforms.Resize(256),
-    #             transforms.CenterCrop(224),
-    #             transforms.ToTensor(),
-    #             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+    print(model)
+
     transform = transforms.Compose([
+                        transforms.Resize(32),
                         transforms.ToTensor(),
                         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
@@ -35,13 +38,16 @@ def predict(opt):
     img_t = transform(image)
     batch_t = torch.unsqueeze(img_t, 0)
 
-    test(model, batch_t, device)
+    pred = test(model, batch_t, device)
+
+    print('예측 결과:', label[int(pred)])
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', type=str, default='resnet')
-    parser.add_argument('--pt', type=str, default='result/example.pt')
+    parser.add_argument('--pt', type=str, default='result/resnet.pt')
     parser.add_argument('--img', type=str, default='data/test.jpg')
+    parser.add_argument('--label', type=str, default='data/label.txt')
     opt = parser.parse_args()
     predict(opt)

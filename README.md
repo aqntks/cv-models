@@ -67,7 +67,25 @@
 #### * 생산적 적대 신경망 (GAN) *
 
 ##  예측 결과 (Prediction results)
+data/label.txt에 학습한 모델의 클래스 명을 정의하세요   
+
+    ##### data/label.txt #####
+
+    airplane
+    automobile
+    bird
+    cat
+    deer
+    dog
+    frog
+    horse
+    ship
+    truck
+
+검출  
+    
     python predict.py --model resnet --weight result/model.pt --img data/test.jpg
+
 
 ## 전이 학습 (Transfer Learning)
 사전 학습된 모델이 있다면 --weights 인수에 사전 학습 모델을 추가해 주세요  
@@ -95,3 +113,4 @@ export.py를 통해 학습 할 모델의 하이퍼 파라미터 튜닝을 진행
     parser.add_argument('--momentum', type=float, default='0.937', help='SGD optimizer를 사용하는 경우 모멘텀 값을 설정하세요')
     parser.add_argument('--dropout', type=float, default='0.2', help='MNASNet, DenseNet 지원. 레이어의 dropout 비율을 적용하세요')
     parser.add_argument('--memoryEF', type=bool, default=False, help='DenseNet 지원. True를 설정하면 효율적인 메모리 학습이 가능합니다. 속도는 느려집니다')
+    parser.add_argument('--light_weight', type=bool, default=False, help='True로 설정하면 학습을 마친 후 모델 경량화 작업을 진행합니다')

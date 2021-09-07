@@ -7,4 +7,4 @@ torchvision>=0.8.1
 einops>=0.3
 opencv-python
 cython
-# pycocotools
+pycocotools

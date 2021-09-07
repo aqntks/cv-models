@@ -4,16 +4,16 @@ import torch
 import argparse
 
 from data.load_data import data
-from utils.common import model_save
+from utils.common import model_save, lightWeight
 
 from selector.select import classification, detection, segmentation
 
-model = ['mlp', 'cnn', 'resnet', 'alexnet', 'mobilenetv2', 'mobilenetv3s', 'mobilenetv3l', 'alexnet', 'squeezenet1_0', 'squeezenet1_1']
+model_list = ['mlp', 'cnn', 'resnet', 'alexnet', 'mobilenetv2', 'mobilenetv3s', 'mobilenetv3l', 'alexnet', 'squeezenet1_0', 'squeezenet1_1']
 
 
 def main(opt):
-    mode, model_name, optimizer, img_data, batch_size, epochs, img_size \
-        = opt.mode, opt.model, opt.optim, opt.data, opt.batch, opt.epoch, opt.img
+    mode, model_name, optimizer, img_data, batch_size, epochs, img_size, light_weight \
+        = opt.mode, opt.model, opt.optim, opt.data, opt.batch, opt.epoch, opt.img, opt.light_weight
 
     if torch.cuda.is_available():
         device = torch.device('cuda')
@@ -44,11 +44,14 @@ def main(opt):
     try:
         if mode == 'classification':
             model = classification(model_name, optimizer, device, epochs, train_loader, test_loader, img_size, class_count, opt)
-            model_save(model, state_dict=True)
-        if mode == 'detection':
+        elif mode == 'detection':
             detection()
-        if mode == 'segmentation':
+        elif mode == 'segmentation':
             segmentation()
+
+        if light_weight:
+            model = lightWeight(model)
+        model_save(model, state_dict=True)
     except:
         print('지원하지 않는 모델입니다')
         sys.exit()
@@ -68,5 +71,6 @@ if __name__ == "__main__":
     parser.add_argument('--momentum', type=float, default='0.937', help='SGD optimizer를 사용하는 경우 모멘텀 값을 설정하세요')
     parser.add_argument('--dropout', type=float, default='0.2', help='MNASNet, DenseNet 지원. 레이어의 dropout 비율을 적용하세요')
     parser.add_argument('--memoryEF', type=bool, default=False, help='DenseNet 지원. True를 설정하면 효율적인 메모리 학습이 가능합니다. 속도는 느려집니다')
+    parser.add_argument('--light_weight', type=bool, default=False, help='True로 설정하면 학습을 마친 후 모델 경량화 작업을 진행합니다')
     opt = parser.parse_args()
     main(opt)
