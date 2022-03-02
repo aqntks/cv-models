@@ -64,8 +64,6 @@
 4. DeepLabV3+ - (예정)
 5. ReSeg - (예정)
 
-#### * 생산적 적대 신경망 (GAN) *
-
 ##  예측 결과 (Prediction results)
 data/label.txt에 학습한 모델의 클래스 명을 정의하세요   
 
