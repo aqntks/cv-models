@@ -57,13 +57,6 @@
 |yolov4|[[arxiv]](https://arxiv.org/pdf/2004.10934.pdf)|<center>-</center>|<center>(준비중)</center>|
 |yolov5|[[github]](https://github.com/ultralytics/yolov5)|<center>-</center>|<center>(준비중)</center>|
 
-#### * 분할 모델 (Segmentation) *
-1. U-Net - (예정)
-2. FCN - (예정)
-3. DeepLabV3 - (예정)
-4. DeepLabV3+ - (예정)
-5. ReSeg - (예정)
-
 ##  예측 결과 (Prediction results)
 data/label.txt에 학습한 모델의 클래스 명을 정의하세요   
 
